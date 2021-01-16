@@ -1,5 +1,5 @@
 main : com.boyboy0710.mob.Main
-name : entity
+name : mob
 version : 1.2.0
 api-version : 1.16
 
