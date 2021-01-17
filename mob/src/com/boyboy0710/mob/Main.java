@@ -63,7 +63,7 @@ public class Main extends JavaPlugin implements Listener{
 			else if(args[0].equalsIgnoreCase("king_creeper")) {
 				Player player = (Player) sender;
 				setcreeperStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CREEPER));
-				skeleton = true;
+				creeper = true;
 				World world = player.getWorld();
 				world.setStorm(true);
 				world.setThundering(true);
