@@ -34,6 +34,7 @@ public class Main extends JavaPlugin implements Listener{
 	
 	public boolean zombie = false;
 	public boolean skeleton = false;
+	public boolean creeper = false;
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
@@ -53,12 +54,21 @@ public class Main extends JavaPlugin implements Listener{
 		
 			else if(args[0].equalsIgnoreCase("king_skeleton")) {
 				Player player = (Player) sender;
-				setZombieStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SKELETON));
+				setSkeletonStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SKELETON));
 				skeleton = true;
 				World world = player.getWorld();
 				world.setStorm(true);
 				world.setThundering(true);
 			}
+			else if(args[0].equalsIgnoreCase("king_creeper")) {
+				Player player = (Player) sender;
+				setcreeperStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CREEPER));
+				skeleton = true;
+				World world = player.getWorld();
+				world.setStorm(true);
+				world.setThundering(true);
+			}
+			
 		}
 		return false;
 	}
@@ -78,19 +88,24 @@ public class Main extends JavaPlugin implements Listener{
 	  entity.getEquipment().setItemInHand(new ItemStack(Material.NETHERITE_SWORD));
 	 }
 	 
-	 public void setSkeletonStats(LivingEntity entity) {
-		  entity.setCustomName("king_skeleton");
-		  entity.setMaxHealth(1000.0);//최대 체력 설정
-		  entity.setHealth(1000.0);//현재 체력 설정
-		  entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 10));
-		  entity.addPotionEffect(new PotionEffect(PotionEffectType.JUMP,1000000, 10));
-		  entity.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST,1000000, 100));
-		  entity.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,1000000, 1));
-		  entity.getEquipment().setHelmet(new ItemStack(Material.NETHERITE_HELMET));
-		  entity.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
-		  entity.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
-		  entity.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
-		  entity.getEquipment().setItemInHand(new ItemStack(Material.BOW));
+	 public void setcreeperStats(LivingEntity entity) {
+		  entity.setCustomName("king_creeper");
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 100));
+		 }
+	 
+	 public void setSkeletonStats(LivingEntity skeleton) {
+		 skeleton.setCustomName("king_skeleton");
+		 skeleton.setMaxHealth(1000.0);//최대 체력 설정
+		 skeleton.setHealth(1000.0);//현재 체력 설정
+		 skeleton.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 10));
+		 skeleton.addPotionEffect(new PotionEffect(PotionEffectType.JUMP,1000000, 10));
+		 skeleton.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST,1000000, 100));
+		 skeleton.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,1000000, 1));
+		 skeleton.getEquipment().setHelmet(new ItemStack(Material.NETHERITE_HELMET));
+		 skeleton.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
+		 skeleton.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
+		 skeleton.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
+		 skeleton.getEquipment().setItemInHand(new ItemStack(Material.BOW));
 		 }
 	 
 	 @EventHandler
@@ -105,9 +120,11 @@ public class Main extends JavaPlugin implements Listener{
 	   zombie = false;
 	   if(!zombie) {
 		   if(!skeleton) {
-			   World world = ((Entity) event).getWorld();
-			   world.setStorm(false);
-			   world.setThundering(false);
+			   if(!creeper){
+				   World world = ((Entity) event).getWorld();
+				   world.setStorm(false);
+				   world.setThundering(false);
+			   }
 		   }
 	   }
 	 }
@@ -121,13 +138,31 @@ public class Main extends JavaPlugin implements Listener{
 		   zombie = false;
 		   if(!zombie) {
 			   if(!skeleton) {
-				   World world = ((Entity) event).getWorld();
-				   world.setStorm(false);
-				   world.setThundering(false);
+				   if(!creeper){
+					   World world = ((Entity) event).getWorld();
+					   world.setStorm(false);
+					   world.setThundering(false);
+				   }
 			   }
 		   }
 		 }
-}
-	 
-	
+	  if(event.getEntity().getCustomName() == "king_zombie") {
+		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BLOCK, 100));
+		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_HELMET, 100));
+		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_LEGGINGS, 100));
+		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BOOTS, 100));
+		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_SWORD, 100));
+		   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 10);
+		   creeper = false;
+		   if(!zombie) {
+			   if(!skeleton) {
+				   if(!creeper){
+					   World world = ((Entity) event).getWorld();
+					   world.setStorm(false);
+					   world.setThundering(false);
+				   }
+			   }
+		   }
+		 }
+	 }	
 }
