@@ -67,9 +67,7 @@ public class Main extends JavaPlugin implements Listener{
 				World world = player.getWorld();
 				world.setStorm(true);
 				world.setThundering(true);
-			}
-			
-			 
+			} 
 		}
 		return false;
 	}
@@ -86,12 +84,12 @@ public class Main extends JavaPlugin implements Listener{
 	  entity.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
 	  entity.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
 	  entity.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
-	  entity.getEquipment().setItemInHand(new ItemStack(Material.NETHERITE_SWORD));
 	 }
 	 
 	 public void setcreeperStats(LivingEntity entity) {
 		  entity.setCustomName("king_creeper");
 		  entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 100));
+		  entity.getEquipment().setItemInHand(new ItemStack(Material.TOTEM_OF_UNDYING));
 		 }
 	 
 	 public void setSkeletonStats(LivingEntity skeleton) {
