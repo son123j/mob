@@ -146,13 +146,8 @@ public class Main extends JavaPlugin implements Listener{
 			   }
 		   }
 		 }
-	  if(event.getEntity().getCustomName() == "king_zombie") {
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BLOCK, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_HELMET, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_LEGGINGS, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BOOTS, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_SWORD, 100));
-		   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 10);
+	  if(event.getEntity().getCustomName() == "king_creeper") {
+		   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 1000);
 		   creeper = false;
 		   if(!zombie) {
 			   if(!skeleton) {
