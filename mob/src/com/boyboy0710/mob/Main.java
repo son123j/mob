@@ -136,6 +136,25 @@ public class Main extends JavaPlugin implements Listener{
 		 }
 	 
 	 @EventHandler
+	 public void getWitherSkeletonDead(EntityDeathEvent event) {
+		 if(event.getEntity().getCustomName() == "king_Wither Skeleton") {
+			   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 50);
+			   Wither_Skeleton = false;
+			   if(!zombie) {
+				   if(!skeleton) {
+					   if(!creeper){
+						   if(!Wither_Skeleton) {
+							   World world = ((Entity) event).getWorld();
+							   world.setStorm(false);
+							   world.setThundering(false);
+						   }
+					   }
+				   }
+			   }
+			 }
+	 }
+	 
+	 @EventHandler
 	 public void getSkeletonDead(EntityDeathEvent event) {
 		 if(event.getEntity().getCustomName() == "king_skeleton") {
 			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BLOCK, 100));
@@ -144,13 +163,15 @@ public class Main extends JavaPlugin implements Listener{
 			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BOOTS, 100));
 			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_SWORD, 100));
 			   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 10);
-			   zombie = false;
+			   skeleton = false;
 			   if(!zombie) {
 				   if(!skeleton) {
 					   if(!creeper){
-						   World world = ((Entity) event).getWorld();
-						   world.setStorm(false);
-						   world.setThundering(false);
+						   if(!Wither_Skeleton) {
+							   World world = ((Entity) event).getWorld();
+							   world.setStorm(false);
+							   world.setThundering(false);
+						   }
 					   }
 				   }
 			   }
@@ -164,9 +185,11 @@ public class Main extends JavaPlugin implements Listener{
 			   if(!zombie) {
 				   if(!skeleton) {
 					   if(!creeper){
-						   World world = ((Entity) event).getWorld();
-						   world.setStorm(false);
-						   world.setThundering(false);
+						   if(!Wither_Skeleton) {
+							   World world = ((Entity) event).getWorld();
+							   world.setStorm(false);
+							   world.setThundering(false);
+						   }
 					   }
 				   }
 			   }
@@ -186,9 +209,11 @@ public class Main extends JavaPlugin implements Listener{
 	   if(!zombie) {
 		   if(!skeleton) {
 			   if(!creeper){
-				   World world = ((Entity) event).getWorld();
-				   world.setStorm(false);
-				   world.setThundering(false);
+				   if(!Wither_Skeleton) {
+					   World world = ((Entity) event).getWorld();
+					   world.setStorm(false);
+					   world.setThundering(false);
+				   }
 			   }
 		   }
 	   }
