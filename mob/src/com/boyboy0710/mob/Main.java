@@ -62,7 +62,7 @@ public class Main extends JavaPlugin implements Listener{
 			}
 			else if(args[0].equalsIgnoreCase("king_creeper")) {
 				Player player = (Player) sender;
-				setcreeperStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CREEPER));
+				setCreeperStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CREEPER));
 				creeper = true;
 				World world = player.getWorld();
 				world.setStorm(true);
@@ -86,10 +86,10 @@ public class Main extends JavaPlugin implements Listener{
 	  entity.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
 	 }
 	 
-	 public void setcreeperStats(LivingEntity entity) {
+	 public void setCreeperStats(LivingEntity entity) {
 		  entity.setCustomName("king_creeper");
 		  entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 100));
-		  entity.getEquipment().setItemInHand(new ItemStack(Material.TOTEM_OF_UNDYING));
+		  entity.getEquipment().setItemInHand(new ItemStack(Material.NETHERITE_SWORD));
 		 }
 	 
 	 public void setSkeletonStats(LivingEntity skeleton) {
@@ -106,6 +106,44 @@ public class Main extends JavaPlugin implements Listener{
 		 skeleton.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
 		 skeleton.getEquipment().setItemInHand(new ItemStack(Material.BOW));
 		 }
+	 
+	 @EventHandler
+	 public void getSkeletonDead(EntityDeathEvent event) {
+		 if(event.getEntity().getCustomName() == "king_skeleton") {
+			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BLOCK, 100));
+			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_HELMET, 100));
+			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_LEGGINGS, 100));
+			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BOOTS, 100));
+			   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_SWORD, 100));
+			   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 10);
+			   zombie = false;
+			   if(!zombie) {
+				   if(!skeleton) {
+					   if(!creeper){
+						   World world = ((Entity) event).getWorld();
+						   world.setStorm(false);
+						   world.setThundering(false);
+					   }
+				   }
+			   }
+			 }
+	 }
+	 @EventHandler
+	 public void getCreeperDead(EntityDeathEvent event) {
+		 if(event.getEntity().getCustomName() == "king_creeper") {
+			   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 1000);
+			   creeper = false;
+			   if(!zombie) {
+				   if(!skeleton) {
+					   if(!creeper){
+						   World world = ((Entity) event).getWorld();
+						   world.setStorm(false);
+						   world.setThundering(false);
+					   }
+				   }
+			   }
+			 }
+	 }
 	 
 	 @EventHandler
 	 public void getZombieDead(EntityDeathEvent event) {
@@ -127,36 +165,5 @@ public class Main extends JavaPlugin implements Listener{
 		   }
 	   }
 	 }
-	  if(event.getEntity().getCustomName() == "king_skeleton") {
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BLOCK, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_HELMET, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_LEGGINGS, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_BOOTS, 100));
-		   event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),new ItemStack(Material.NETHERITE_SWORD, 100));
-		   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 10);
-		   zombie = false;
-		   if(!zombie) {
-			   if(!skeleton) {
-				   if(!creeper){
-					   World world = ((Entity) event).getWorld();
-					   world.setStorm(false);
-					   world.setThundering(false);
-				   }
-			   }
-		   }
-		 }
-	  if(event.getEntity().getCustomName() == "king_creeper") {
-		   ((Entity) event).getWorld().createExplosion(((Entity) event).getLocation(), 1000);
-		   creeper = false;
-		   if(!zombie) {
-			   if(!skeleton) {
-				   if(!creeper){
-					   World world = ((Entity) event).getWorld();
-					   world.setStorm(false);
-					   world.setThundering(false);
-				   }
-			   }
-		   }
-		 }
-	 }	
+	}	 
 }
