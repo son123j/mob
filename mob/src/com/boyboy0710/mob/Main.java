@@ -8,6 +8,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton.SkeletonType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -35,6 +36,7 @@ public class Main extends JavaPlugin implements Listener{
 	public boolean zombie = false;
 	public boolean skeleton = false;
 	public boolean creeper = false;
+	public boolean Wither_Skeleton = false;
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
@@ -60,6 +62,16 @@ public class Main extends JavaPlugin implements Listener{
 				world.setStorm(true);
 				world.setThundering(true);
 			}
+			
+			else if(args[0].equalsIgnoreCase("king_Wither Skeleton")) {
+				Player player = (Player) sender;
+				setWitherSkeletonStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.WITHER_SKELETON));
+				Wither_Skeleton = true;
+				World world = player.getWorld();
+				world.setStorm(true);
+				world.setThundering(true);
+			}
+			
 			else if(args[0].equalsIgnoreCase("king_creeper")) {
 				Player player = (Player) sender;
 				setCreeperStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CREEPER));
@@ -71,6 +83,21 @@ public class Main extends JavaPlugin implements Listener{
 		}
 		return false;
 	}
+	
+	 public void setWitherSkeletonStats(LivingEntity entity) {
+		 entity.setCustomName("king_Wither Skeleton");
+		  entity.setMaxHealth(5000.0);//최대 체력 설정
+		  entity.setHealth(5000.0);//현재 체력 설정
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 6));
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST,1000000, 3000));
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,1000000, 1));
+		  entity.getEquipment().setHelmet(new ItemStack(Material.NETHERITE_HELMET));
+		  entity.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
+		  entity.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
+		  entity.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
+		  entity.getEquipment().setItemInHand(new ItemStack(Material.BOW));
+		 }
+	 
 	
 	 public void setZombieStats(LivingEntity entity) {
 	  entity.setCustomName("king_zombie");
@@ -84,6 +111,7 @@ public class Main extends JavaPlugin implements Listener{
 	  entity.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
 	  entity.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
 	  entity.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
+	  
 	 }
 	 
 	 public void setCreeperStats(LivingEntity entity) {
