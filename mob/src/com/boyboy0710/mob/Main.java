@@ -30,7 +30,7 @@ public class Main extends JavaPlugin implements Listener{
 	}
 	@Override
 	public void onDisable() {
-		System.out.println("entity 플러그인이 비활성화 되었습니다");
+		System.out.println("mob 플러그인이 비활성화 되었습니다");
 	}
 	
 	public boolean zombie = false;
@@ -153,7 +153,6 @@ public class Main extends JavaPlugin implements Listener{
 			   }
 			 }
 	 }
-	 
 	 @EventHandler
 	 public void getSkeletonDead(EntityDeathEvent event) {
 		 if(event.getEntity().getCustomName() == "king_skeleton") {
