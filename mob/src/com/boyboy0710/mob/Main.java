@@ -39,7 +39,7 @@ public class Main extends JavaPlugin implements Listener{
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
-		if(cmd.getName().equalsIgnoreCase("spwan_no_ai")) {
+		if(cmd.getName().equalsIgnoreCase("spawn_no_ai")) {
 			if(args.length == 0) {
 				sender.sendMessage("커맨드를 끝까지 쳐주세요");
 			}
