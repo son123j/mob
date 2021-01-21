@@ -39,6 +39,53 @@ public class Main extends JavaPlugin implements Listener{
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
+		if(cmd.getName().equalsIgnoreCase("spwan_no_ai")) {
+			if(args.length == 0) {
+				sender.sendMessage("커맨드를 끝까지 쳐주세요");
+			}
+			
+			else if(args[0].equalsIgnoreCase("zombie")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ZOMBIE));
+			}
+			
+			else if(args[0].equalsIgnoreCase("skeleton")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SKELETON));
+			}
+			
+			else if(args[0].equalsIgnoreCase("creeper")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CREEPER));
+			}
+			
+			else if(args[0].equalsIgnoreCase("ENDER_DRAGON")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ENDER_DRAGON));
+			}
+			
+			else if(args[0].equalsIgnoreCase("witch")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.WITCH));
+			}
+			
+			else if(args[0].equalsIgnoreCase("wither")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.WITHER));
+			}
+			
+			else if(args[0].equalsIgnoreCase("wither_skeleton")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.WITHER_SKELETON));
+			}
+			
+			else if(args[0].equalsIgnoreCase("shulker")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SHULKER));
+			}
+			
+		}
+		
 		if(cmd.getName().equalsIgnoreCase("spawn")) {
 			if(args.length == 0) {
 				sender.sendMessage("커맨드를 끝까지 쳐주세요");
@@ -81,6 +128,10 @@ public class Main extends JavaPlugin implements Listener{
 			} 
 		}
 		return false;
+	}
+	
+	public void setentityStats(LivingEntity entity) {
+		entity.setAI(false);
 	}
 	
 	 public void setWitherSkeletonStats(LivingEntity entity) {
