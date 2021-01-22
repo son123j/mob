@@ -185,6 +185,7 @@ public class Main extends JavaPlugin implements Listener{
 		  entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 60));
 		  entity.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST,1000000, 3000));
 		  entity.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,1000000, 1));
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.JUMP,1000000, 10));
 		  entity.getEquipment().setItemInHand(new ItemStack(Material.NETHERITE_SWORD));
 		 }
 	
