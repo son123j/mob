@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Golem;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -138,7 +139,7 @@ public class Main extends JavaPlugin implements Listener{
 			}
 		
 			else if(args[0].equalsIgnoreCase("king_skeleton")) {
-				Player player = (Player) sender;
+				Player player = (Player) sender;                                                       
 				setSkeletonStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SKELETON));
 				skeleton = true;
 				World world = player.getWorld();
@@ -163,6 +164,12 @@ public class Main extends JavaPlugin implements Listener{
 				world.setStorm(true);
 				world.setThundering(true);
 			} 
+			
+			else if(args[0].equalsIgnoreCase("king_Iron golem")) {
+				Player player = (Player) sender;
+				setCreeperStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.IRON_GOLEM));
+			} 
+			
 		}
 		return false;
 	}
@@ -170,6 +177,16 @@ public class Main extends JavaPlugin implements Listener{
 	public void setentityStats(LivingEntity entity) {
 		entity.setAI(false);
 	}
+	
+	 public void setIrongolemStats(LivingEntity entity) {
+		 entity.setCustomName("king_Iron golem");
+		  entity.setMaxHealth(5000.0);//최대 체력 설정
+		  entity.setHealth(5000.0);//현재 체력 설정
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,1000000, 60));
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST,1000000, 3000));
+		  entity.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,1000000, 1));
+		  entity.getEquipment().setItemInHand(new ItemStack(Material.NETHERITE_SWORD));
+		 }
 	
 	 public void setWitherSkeletonStats(LivingEntity entity) {
 		 entity.setCustomName("king_Wither Skeleton");
