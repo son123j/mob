@@ -43,47 +43,79 @@ public class Main extends JavaPlugin implements Listener{
 			if(args.length == 0) {
 				sender.sendMessage("커맨드를 끝까지 쳐주세요");
 			}
-			
 			else if(args[0].equalsIgnoreCase("zombie")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ZOMBIE));
 			}
-			
 			else if(args[0].equalsIgnoreCase("skeleton")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SKELETON));
 			}
-			
 			else if(args[0].equalsIgnoreCase("creeper")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CREEPER));
 			}
-			
 			else if(args[0].equalsIgnoreCase("ENDER_DRAGON")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ENDER_DRAGON));
 			}
-			
 			else if(args[0].equalsIgnoreCase("witch")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.WITCH));
 			}
-			
 			else if(args[0].equalsIgnoreCase("wither")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.WITHER));
 			}
-			
 			else if(args[0].equalsIgnoreCase("wither_skeleton")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.WITHER_SKELETON));
 			}
-			
 			else if(args[0].equalsIgnoreCase("shulker")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SHULKER));
 			}
-			
+			//2
+			else if(args[0].equalsIgnoreCase("bat")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.BAT));
+			}
+			else if(args[0].equalsIgnoreCase("bee")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.BEE));
+			}
+			else if(args[0].equalsIgnoreCase("blaze")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.BLAZE));
+			}
+			else if(args[0].equalsIgnoreCase("cat")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CAT));
+			}
+			else if(args[0].equalsIgnoreCase("cave_apider")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CAVE_SPIDER));
+			}
+			else if(args[0].equalsIgnoreCase("chicken")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.CHICKEN));
+			}
+			else if(args[0].equalsIgnoreCase("cod")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.COD)); //대구
+			}
+			else if(args[0].equalsIgnoreCase("cow")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.COW));
+			}
+			else if(args[0].equalsIgnoreCase("dolphin")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.DOLPHIN)); //돌고래
+			}
+			else if(args[0].equalsIgnoreCase("donkey")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.DONKEY));
+			}
 		}
 		
 		if(cmd.getName().equalsIgnoreCase("spawn")) {
