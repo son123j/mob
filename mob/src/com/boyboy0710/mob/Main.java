@@ -213,6 +213,10 @@ public class Main extends JavaPlugin implements Listener{
 		  entity.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,1000000, 1));
 		  entity.addPotionEffect(new PotionEffect(PotionEffectType.JUMP,1000000, 10));
 		  entity.getEquipment().setItemInHand(new ItemStack(Material.NETHERITE_SWORD));
+		  entity.getEquipment().setHelmet(new ItemStack(Material.IRON_HELMET));
+		  entity.getEquipment().setChestplate(new ItemStack(Material.IRON_CHESTPLATE));
+		  entity.getEquipment().setLeggings(new ItemStack(Material.IRON_LEGGINGS));
+		  entity.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS));
 		 }
 	
 	 public void setWitherSkeletonStats(LivingEntity entity) {
