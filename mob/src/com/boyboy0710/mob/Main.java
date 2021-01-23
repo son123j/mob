@@ -71,7 +71,7 @@ public class Main extends JavaPlugin implements Listener{
 			}
 			else if(args[0].equalsIgnoreCase("cod")) {
 				Player player = (Player) sender;
-			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.COD)); //대구
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.COD)); 
 			}
 			else if(args[0].equalsIgnoreCase("cow")) {
 				Player player = (Player) sender;
@@ -84,16 +84,42 @@ public class Main extends JavaPlugin implements Listener{
 			
 			else if(args[0].equalsIgnoreCase("dolphin")) {
 				Player player = (Player) sender;
-			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.DOLPHIN)); //돌고래
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.DOLPHIN)); 
 			}
 			else if(args[0].equalsIgnoreCase("donkey")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.DONKEY));
 			}
+			else if(args[0].equalsIgnoreCase("drowned")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.DROWNED));//드라운드
+			}
 			
+			else if(args[0].equalsIgnoreCase("ender_guardian")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ELDER_GUARDIAN));//앨더가디언
+			}
 			else if(args[0].equalsIgnoreCase("ENDER_DRAGON")) {
 				Player player = (Player) sender;
 			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ENDER_DRAGON));
+			}
+			else if(args[0].equalsIgnoreCase("enderman")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ENDERMAN));
+			}
+			else if(args[0].equalsIgnoreCase("endermite")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.ENDERMITE));
+			}
+			
+			else if(args[0].equalsIgnoreCase("fox")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.FOX));
+			}
+			
+			else if(args[0].equalsIgnoreCase("ghast")) {
+				Player player = (Player) sender;
+			    setentityStats((LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.GHAST));
 			}
 			
 			else if(args[0].equalsIgnoreCase("skeleton")) {

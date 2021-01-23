@@ -5,8 +5,5 @@ api-version : 1.16
 
 commands:
   spawn:
-    king_zombie:
-    king_skeleton:
-    king_Wither Skeleton:
-    king_creeper:
+    
   spawn_no_ai:
