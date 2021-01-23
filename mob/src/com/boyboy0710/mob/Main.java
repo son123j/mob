@@ -202,6 +202,9 @@ public class Main extends JavaPlugin implements Listener{
 	
 	public void setentityStats(LivingEntity entity) {
 		entity.setAI(false);
+		entity.setCustomName("no_ai_mob");
+		  entity.setMaxHealth(9999.0);//최대 체력 설정
+		  entity.setHealth(9999.0);//현재 체력 설정
 	}
 	
 	 public void setIrongolemStats(LivingEntity entity) {
